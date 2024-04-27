@@ -1,25 +1,16 @@
 import { createReducer, on } from "@ngrx/store"
-import { decrement, increment, reset } from "./save.actions"
+import { write } from "./save.actions"
+import { initialState } from "./save.state"
 
-const _counterReducer = createReducer(initialState, on(increment, (state) => {
-    return {
-        ...state,
-        counter: state.counter + 1
-    }
-}),
-on(decrement, (state) => {
-    return {
-        ...state,
-        counter: state.counter - 1
-    }
-}),
-on(reset, (state) => {
-    return {
-        ...state,
-        counter: state.counter 
-    }
-}),
-)
-export function counterReducer(state: any, action: any) {
-    return _counterReducer(state, action)
+
+const _texts = createReducer(initialState,
+    on(write,(state,{ value })=>{
+        return{
+            ...state,
+            text:value
+        }
+    })
+    )
+export function WriteText(state:any,action:any){
+    return _texts(state, action)
 }

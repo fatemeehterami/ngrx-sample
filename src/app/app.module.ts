@@ -5,6 +5,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DataInputComponent } from './data-input/data-input.component';
 import { DataShowComponent } from './data-show/data-show.component';
+import { StoreModule } from '@ngrx/store';
+import { WriteText } from './shared/store/save.reducer';
 
 @NgModule({
   declarations: [
@@ -14,7 +16,8 @@ import { DataShowComponent } from './data-show/data-show.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    StoreModule.forRoot({text:WriteText})
   ],
   providers: [],
   bootstrap: [AppComponent]
